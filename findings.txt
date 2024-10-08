@@ -1,0 +1,9 @@
+# Findings on What Containers Share with the Host
+
+Docker Containers are basically lightweight distro that run on isolated environments and share operating system kernel. However, they do share certain resources and configurations with the host system:
+
+1. **Kernel**: Docker Containers share the same OS kernel as the host. Docker containers are much more efficient than virtual machines that require separate operating systems.
+
+2. **File System**: Docker containers can access the host’s file system using volumes or bind mounts. This lets them store data or share files between the container and the host.
+
+3. **Networking**: Docker containers have isolated networking. They can share the host’s network interface.
