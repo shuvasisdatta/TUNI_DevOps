@@ -8,7 +8,7 @@ from flask import Flask, jsonify
 app = Flask(__name__)
 
 # Function to get system information
-def get_info():
+def get_sysinfo():
     # Get the IP address
     ip_address = subprocess.getoutput("hostname -I").strip()
     
@@ -31,14 +31,14 @@ def get_info():
     return info
 
 # Endpoint for HTTP requests
-@app.route('/info', methods=['GET'])
+@app.route('/', methods=['GET'])
 def get_info():
     # Get information from Service2
     service2_response = requests.get('http://service2:5000/info')
     service2_info = service2_response.json()
     
     # Get Service1's system info
-    service1_info = get_info()
+    service1_info = get_sysinfo()
     
     response = {
         "Service1": service1_info,

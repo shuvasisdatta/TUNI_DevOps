@@ -4,7 +4,7 @@ const { execSync } = require('child_process');
 const app = express();
 
 // Function to get system information
-function getInfo() {
+function getSysInfo() {
     // Get the container IP address
     const ipAddress = execSync("hostname -I").toString().trim();
     
@@ -28,7 +28,7 @@ function getInfo() {
 
 // Endpoint to provide system information
 app.get('/info', (req, res) => {
-    res.json(getInfo());
+    res.json(getSysInfo());
 });
 
 // Start server on port 5000
