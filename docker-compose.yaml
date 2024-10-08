@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  service1:
+    build: 
+      context: ./Service1
+      dockerfile: Dockerfile
+    ports:
+      - "8199:8199"
+    depends_on:
+      - service2
+    networks:
+      - app-network
+
+  service2:
+    build: 
+      context: ./Service2
+      dockerfile: Dockerfile
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
