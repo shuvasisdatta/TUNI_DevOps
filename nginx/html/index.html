@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Service Control</title>
+</head>
+<body>
+    <h2>Service Control</h2>
+    <button onclick="sendRequest()">REQUEST</button>
+    <button onclick="stopServices()">STOP</button>
+    <textarea id="response" rows="4" cols="50"></textarea>
+
+    <script>
+        function sendRequest() {
+            fetch('/request')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('response').value = JSON.stringify(data, null, 2);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function stopServices() {
+            fetch('/stop', { method: 'POST' })
+                .then(response => {
+                    document.getElementById('response').value = "System shutting down...";
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
