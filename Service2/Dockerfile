@@ -10,6 +10,9 @@ COPY main.js .
 # Install express
 RUN npm install express
 
+# Install dockerode for docker access
+RUN npm install dockerode
+
 # Expose port 5000
 EXPOSE 5000
 
