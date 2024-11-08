@@ -1,13 +1,17 @@
 # docker container ls
 
-CONTAINER ID   IMAGE                  COMMAND                  CREATED              STATUS              PORTS                                       NAMES
-9a4806187ab8   assignment3_service1   "python main.py"         About a minute ago   Up About a minute   0.0.0.0:8199->8199/tcp, :::8199->8199/tcp   assignment3_service1_1
-76b2f6e9c087   assignment3_service2   "docker-entrypoint.s…"   About a minute ago   Up About a minute   5000/tcp                                    assignment3_service2_1
+CONTAINER ID   IMAGE                  COMMAND                  CREATED         STATUS          PORTS                                       NAMES
+8c3aa43497ab   nginx:latest           "/docker-entrypoint.…"   7 minutes ago   Up 30 seconds   0.0.0.0:8198->80/tcp, [::]:8198->80/tcp     tuni_devops_nginx_1
+cee7bc77c209   tuni_devops_service1   "python main.py"         7 minutes ago   Up 30 seconds   0.0.0.0:8199->8199/tcp, :::8199->8199/tcp   tuni_devops_service1_1
+83f6ad2efed7   tuni_devops_service2   "docker-entrypoint.s…"   7 minutes ago   Up 30 seconds   5000/tcp                                    tuni_devops_service2_1
 
 # docker network ls
 
 NETWORK ID     NAME                      DRIVER    SCOPE
+2b584c23c236   1_app-network             bridge    local
 920ee5d28a46   assignment3_app-network   bridge    local
-ec8749145d53   bridge                    bridge    local
+997cc3b5a307   bridge                    bridge    local
 1a932e35985f   host                      host      local
 7b980bd64770   none                      null      local
+3794ed6a9af5   tuni_devops_app-network   bridge    local
+
