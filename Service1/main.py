@@ -1,7 +1,7 @@
 # service1.py
-import os
 import json
 import subprocess
+import time
 import requests
 from flask import Flask, jsonify
 
@@ -44,6 +44,8 @@ def get_info():
         "Service1": service1_info,
         "Service2": service2_info
     }
+
+    time.sleep(2)  # Delay for 2 seconds
     return jsonify(response)
 
 if __name__ == '__main__':
