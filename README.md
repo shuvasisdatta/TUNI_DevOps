@@ -2,7 +2,7 @@
 
 Tampere University DevOps Course Exercises
 
-login creditial:
+login credintial:
 
 user: user
 password: user
