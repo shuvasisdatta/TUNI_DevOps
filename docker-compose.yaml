@@ -6,11 +6,13 @@ services:
       context: ./Service1
       dockerfile: Dockerfile
     ports:
-      - "8199:8199"
+      - "8199"
     depends_on:
       - service2
     networks:
       - app-network
+    deploy:
+      replicas: 3
 
   service2:
     build: 
