@@ -1,15 +1,45 @@
+image: docker:20.10.24
+
+services:
+  - docker:dind
+
+variables:
+  DOCKER_TLS_CERTDIR: "/certs"
+  DOCKER_HOST: "tcp://docker:2375"
+  DOCKER_DRIVER: "overlay2"
+
 stages:
   - build
+  - test
   - deploy
+
+before_script:
+  # Install necessary tools
+  - apk add --no-cache docker-compose
+  - docker info
 
 build:
   stage: build
   script:
-    - echo "Build starts ..."
+    - echo "Build starts..."
     - docker-compose build
+  tags:
+    - docker
+
+test:
+  stage: test
+  script:
+    - echo "Running tests..."
+    - docker-compose up -d
+    - docker ps
+    # Replace with actual test commands
+    - echo "Tests passed!"
 
 deploy:
   stage: deploy
   script:
-    - echo "Deploying containers..."
+    - echo "Deploying services..."
     - docker-compose up -d
+    - docker ps
+  tags:
+    - docker
