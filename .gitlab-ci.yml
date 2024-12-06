@@ -1,0 +1,15 @@
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  script:
+    - echo "Build starts ..."
+    - docker-compose build
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying containers..."
+    - docker-compose up -d
